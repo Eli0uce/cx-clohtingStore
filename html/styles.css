@@ -1,0 +1,724 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  /* background-image: url("img/background.png"); */
+  background-size: cover; /* Couvre toute la surface du body */
+  background-position: center; /* Centre l'image dans le body */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  background-attachment: fixed; /* Fixe l'image de fond lors du défilement */
+  visibility: hidden;
+}
+
+/* Animation pour la sidebar */
+@keyframes slideInY {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Animation pour la sidebar */
+@keyframes slideInX {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+.sidebar {
+  height: 55px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  /* backdrop-filter: blur(4px); */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding-left: 50px;
+  padding-right: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  animation: slideInY 0.5s ease-out;
+}
+
+.sidebar ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 10px 15px; /* Espace entre les éléments */
+}
+
+.sidebar li:hover {
+  background: rgba(0, 0, 0, 0.15);
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar li.active {
+  background: rgba(0, 0, 0, 0.15);
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+  img {
+    height: 35px;
+  }
+}
+
+.sidebar img {
+  height: 30px;
+  transition: height 0.3s;
+}
+
+.sidebar li:hover img {
+  height: 35px;
+}
+
+.favorites {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  margin-bottom: 20px;
+  color: white;
+  border: none;
+  margin-left: 10px;
+  padding: 10px 16px 10px 16px;
+  border-radius: 5px;
+}
+
+.favorites i {
+  transition: all 0.3s ease; /* Animation douce pour la transition */
+}
+
+.favorites:hover i {
+  content: "\f004"; /* Code Unicode pour fa-heart (solid) */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; /* Poids pour fa-solid */
+}
+
+/* .sidebar {
+  color: #f0f0f0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px 0;
+  animation: slideIn 0.5s ease-out;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  border-radius: 0 8px 25px 0;
+  margin-bottom: 5px;
+  background: rgba(0, 0, 0, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 80px;
+  transition: width 0.3s ease, border-radius 0.5s ease;
+}
+
+.sidebar ul li:hover {
+  width: 90px;
+  background: rgba(0, 0, 0, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.sidebar ul li.active {
+  width: 90px;
+  background: rgba(0, 0, 0, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0 0 0 0;
+}
+
+.sidebar ul li img {
+  display: block;
+  margin-left: 15px;
+  padding: 9px;
+  height: 37px;
+  transition: margin-left 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.sidebar ul li:hover img {
+  margin-left: 30px;
+  filter: grayscale(0%);
+}
+
+.sidebar ul li.active img {
+  margin-left: 30px;
+  filter: grayscale(0%);
+} */
+
+.card {
+  position: fixed;
+  top: 48px;
+  left: -75px;
+  padding: 20px 25px 20px 20px;
+  margin-top: 20px;
+  max-height: 92vh;
+  width: 28vw;
+  margin-left: 90px;
+  background: rgba(0, 0, 0, 0.3);
+  /* backdrop-filter: blur(4px); */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 5px;
+  display: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombre pour un effet de profondeur */
+}
+
+.card-title {
+  color: white;
+}
+
+.card .show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.card .hide {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+/* Style pour la barre de recherche */
+#search-bar {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: #f0f0f0; /* Texte blanc */
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: none;
+}
+
+#search-bar::placeholder {
+  color: #888; /* Placeholder gris clair */
+}
+
+/* Conteneur pour la barre de recherche et le bouton de filtre */
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Style pour le bouton de filtre */
+.price-filter {
+  position: relative;
+}
+
+#filter-button {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  margin-bottom: 20px;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#filter-button:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.filter-options {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.45);
+  /* backdrop-filter: blur(4px); */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.filter-options input {
+  width: 100px;
+  margin: 5px 0;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  /* backdrop-filter: blur(4px); */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 5px;
+  color: #f0f0f0;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-buttons button {
+  background: rgba(0, 0, 0, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  /* backdrop-filter: blur(4px); */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.filter-buttons button:first-child {
+  flex: 3; /* Prend 75% de l'espace */
+}
+
+.filter-buttons button:last-child {
+  flex: 1; /* Prend 25% de l'espace */
+  font-size: 15px;
+}
+
+.filter-options button:hover {
+  background-color: #444;
+}
+
+/* Contenu défilant */
+.scrollable-content {
+  max-height: 61vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for the scrollable content */
+.scrollable-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+  border: 2px solid #2c2c2c;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap; /* Assure que les images s'ajustent sur plusieurs lignes */
+  gap: 10px;
+  padding-right: 15px;
+}
+
+.image-grid .column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.image-grid .column img {
+  height: 175px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.image-grid .column img:hover {
+  transform: scale(1.05);
+}
+
+/* Custom scrollbar for the card */
+.card::-webkit-scrollbar {
+  width: 10px;
+}
+
+.card::-webkit-scrollbar-track {
+  background-color: #2c2c2c;
+  border-radius: 0 10px 10px 0;
+}
+
+.card::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+  border: 3px solid #2c2c2c;
+}
+
+.card::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
+}
+
+.card::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+/* Conteneur des boutons */
+.buttons {
+  display: flex;
+  justify-content: space-between; /* Espacement égal entre les boutons */
+}
+
+/* Styles pour les boutons */
+.buttons button {
+  background: rgba(0, 0, 0, 0.15);
+  /* backdrop-filter: blur(2px); */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f0f0f0; /* Texte clair */
+  border: none; /* Supprime la bordure par défaut */
+  padding: 10px 15px; /* Espacement interne */
+  cursor: pointer; /* Curseur en main lors du survol */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  flex: 1; /* Prend la même largeur disponible */
+  text-align: center; /* Centre le texte dans le bouton */
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* Effet au survol des boutons */
+.buttons button:hover {
+  background-color: #303030; /* Couleur de fond plus claire au survol */
+  transform: scale(1.05); /* Légère augmentation de la taille */
+}
+
+/* Effet au clic des boutons */
+.buttons button:active {
+  background-color: #333; /* Couleur de fond plus sombre au clic */
+  transform: scale(1); /* Réinitialise la taille */
+}
+
+#btn-previous {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+#btn-next {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Styles de base pour le panier */
+.cart-container {
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 20px 0 rgba(31, 31, 31, 0.37);
+  /* backdrop-filter: blur(1px); */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+}
+
+.cart-container h3 {
+  color: #f0f0f0;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* Styles pour le slider du panier */
+.cart-slider {
+  display: flex;
+  overflow-x: auto;
+  max-width: 45vh;
+  gap: 10px;
+  padding: 10px 0;
+  scroll-behavior: smooth; /* Permet le défilement fluide */
+}
+
+.cart-slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.cart-slider::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  /* backdrop-filter: blur(4px); */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+}
+
+.cart-slider::-webkit-scrollbar-thumb {
+  background-color: #353535;
+  border-radius: 10px;
+}
+
+.cart-slider::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
+}
+
+/* Styles pour les items du panier */
+.cart-item {
+  flex: 0 0 auto; /* Assure que les éléments du panier ne se réduisent pas */
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 5px;
+  padding: 10px;
+  width: 100px; /* Largeur fixe pour les éléments du panier */
+  text-align: center;
+  position: relative;
+}
+
+.cart-item-price {
+  color: white;
+  font-weight: 600;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.cart-item p {
+  color: #f0f0f0;
+  margin: 0;
+}
+
+/* Conteneur pour l'image et le texte de superposition */
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper .cart-button,
+.image-wrapper .fav-button {
+  display: none; /* Masquer les boutons par défaut */
+}
+
+.image-wrapper:hover .cart-button,
+.image-wrapper:hover .fav-button {
+  display: block; /* Afficher les boutons au survol */
+}
+
+/* Texte de superposition */
+.overlay {
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f0f0f0; /* Couleur du texte */
+  font-size: 15px; /* Taille du texte */
+  font-weight: bold;
+  opacity: 0; /* Cache le texte par défaut */
+  transition: opacity 0.3s ease;
+  border-radius: 5px; /* Coins arrondis pour correspondre à l'image */
+}
+
+/* Affichage du texte au survol de l'image */
+.image-wrapper:hover .overlay {
+  opacity: 1;
+}
+
+/* Styles pour le bouton de suppression */
+.remove-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #d9534f;
+  color: #fff; /* Couleur du texte blanc */
+  border: none;
+  border-radius: 5px;
+  padding-bottom: 4px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1;
+  transition: background 0.3s ease;
+}
+
+/* Effet au survol du bouton de suppression */
+.remove-button:hover {
+  background: #c9302c; /* Couleur de fond plus foncée */
+}
+
+/* Style pour le bouton en haut à droite */
+.zoom-buttons {
+  z-index: 1000;
+}
+
+.zoom-buttons button {
+  background: rgba(0, 0, 0, 0.55);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  /* backdrop-filter: blur(4px); */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: fixed;
+  font-size: 20px;
+  color: white;
+  border-radius: 10px 5px 10px 5px;
+  transition: border-radius 0.5s !important;
+  cursor: pointer;
+}
+
+.zoom-buttons button:hover {
+  border-radius: 5px 10px 5px 10px;
+}
+
+#zoom-button {
+  top: 89px;
+  left: 31.3vw;
+  padding: 8px 13px 6px 13px;
+  display: none;
+}
+
+#head-zoom-button {
+  top: 133px;
+  left: 31.3vw;
+  padding: 8px 14px 6px 14px;
+  display: none;
+}
+
+#body-zoom-button {
+  top: 177px;
+  left: 31.3vw;
+  padding: 8px 12px 6px 11px;
+  display: none;
+}
+
+#legs-zoom-button {
+  top: 221px;
+  left: 31.3vw;
+  padding: 6px 12px 3px 13px;
+  display: none;
+}
+
+#foots-zoom-button {
+  top: 265px;
+  left: 31.3vw;
+  padding: 8px 14px 6px 13px;
+  display: none;
+}
+
+/* Style de la modal */
+.modal {
+  display: none; /* Masquer la modal par défaut */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Couleur de fond sombre avec plus de transparence */
+}
+
+/* Contenu de la modal */
+.modal-content {
+  background: rgba(0, 0, 0, 0.55);
+  /* backdrop-filter: blur(2px); */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  margin: 5% auto; /* Moins de marge pour centrer verticalement */
+  padding: 30px;
+  width: 90%;
+  max-width: 700px; /* Largeur maximale un peu plus grande */
+  border-radius: 10px; /* Coins arrondis moins prononcés */
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre légère pour un effet de profondeur */
+}
+
+.modal-content h2 {
+  color: white;
+  text-align: center;
+}
+
+/* Bouton de fermeture */
+.close {
+  color: #fff; /* Couleur blanche pour le bouton de fermeture */
+  float: right;
+  font-size: 32px; /* Taille du texte plus grande pour le bouton de fermeture */
+  font-weight: bold;
+  transition: color 0.3s ease; /* Transition pour effet au survol */
+}
+
+.close:hover,
+.close:focus {
+  color: #ff4d4d; /* Couleur rouge clair pour l'effet au survol */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Style des items du panier dans la modal */
+#modal-cart-content {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux éléments de se répartir sur plusieurs lignes */
+  gap: 15px; /* Espacement entre les éléments du panier */
+  margin-bottom: 20px; /* Moins de marge en bas pour compacter le contenu */
+}
+
+#modal-cart-content img {
+  height: 60px; /* Légèrement plus grand pour une meilleure visibilité */
+  border-radius: 5px; /* Coins arrondis pour les images */
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.modal-btn button {
+  background-color: #50973b; /* Couleur vive pour le bouton de confirmation */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 5px;
+}
+
+.modal-btn button:hover {
+  background-color: #196900; /* Couleur plus foncée au survol */
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clothing Shop</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/3a7281cb06.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="sidebar">
+      <ul>
+        <li id="tshirt">
+          <img src="img/32.png" alt="Icon T-shirt" />
+        </li>
+        <li id="torso">
+          <img src="img/33.png" alt="Icon Torso" />
+        </li>
+        <li id="pants">
+          <img src="img/36.png" alt="Icon Pants" />
+        </li>
+        <li id="shoes">
+          <img src="img/37.png" alt="Icon Shoes" />
+        </li>
+        <!-- <li id="arms">
+          <img src="img/35.png" alt="Icon Arms" />
+        </li> -->
+        <li id="helmet">
+          <img src="img/31.png" alt="Icon Helmet" />
+        </li>
+        <li id="glasses">
+          <img src="img/39.png" alt="Icon Glasses" />
+        </li>
+        <li id="mask">
+          <img src="img/38.png" alt="Icon Mask" />
+        </li>
+        <li id="bproof">
+          <img src="img/34.png" alt="Icon Bulletproof" />
+        </li>
+        <li id="chain">
+          <img src="img/41.png" alt="Icon Chain" />
+        </li>
+        <li id="bracelets">
+          <img src="img/42.png" alt="Icon Bracelets" />
+        </li>
+        <li id="watches">
+          <img src="img/43.png" alt="Icon Watches" />
+        </li>
+        <li id="ears">
+          <img src="img/40.png" alt="Icon Ears" />
+        </li>
+        <li id="bags">
+          <img src="img/44.png" alt="Icon Bags" />
+        </li>
+      </ul>
+    </div>
+
+    <div class="card" id="card">
+      <!-- <h2 class="card-title">Vêtements</h2> -->
+      <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Rechercher..." />
+
+        <!-- Bouton de filtre par prix -->
+        <div class="price-filter">
+          <button id="filter-button">Filtrer</button>
+          <div id="filter-options" class="filter-options">
+            <input type="number" id="min-price" placeholder="Prix min" />
+            <input type="number" id="max-price" placeholder="Prix max" />
+            <div class="filter-buttons">
+              <button id="apply-filter">Appliquer</button>
+              <button id="remove-filter">x</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="favorites">
+          <i class="fa-regular fa-bookmark"></i>
+        </button>
+      </div>
+
+      <!-- Nouvelle div pour le contenu défilant -->
+      <div class="scrollable-content">
+        <div class="image-grid" id="image-grid">
+          <!-- Images dynamiques ici -->
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button id="btn-previous">
+          <svg
+            height="25px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M6 12H18M6 12L11 7M6 12L11 17"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </button>
+        <button id="btn-cancel">Vider</button>
+        <button id="btn-buy">Acheter</button>
+        <button id="btn-next">
+          <svg
+            height="25px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M6 12H18M18 12L13 7M18 12L13 17"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Section du panier -->
+      <div class="cart-container">
+        <div class="cart-total">
+          <h3>Panier : <span id="total-price">0$</span></h3>
+        </div>
+        <div class="cart-slider" id="cart-slider">
+          <!-- Les éléments du panier seront ajoutés dynamiquement ici -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Boutons zoom -->
+    <div class="zoom-buttons">
+      <button id="zoom-button">
+        <i class="fa-solid fa-video"></i>
+      </button>
+      <button id="head-zoom-button">
+        <i class="fa-regular fa-smile"></i>
+      </button>
+      <button id="body-zoom-button">
+        <i class="fa-solid fa-shirt"></i>
+      </button>
+      <button id="legs-zoom-button">
+        <svg
+          height="23px"
+          viewBox="0 0 24 24"
+          version="1.1"
+          xml:space="preserve"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="#fff"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <style type="text/css">
+              .st0 {
+                opacity: 0.2;
+                fill: none;
+                stroke: #ffffff;
+                stroke-width: 5e-2;
+                stroke-miterlimit: 10;
+              }
+            </style>
+            <g id="Layer_Grid"></g>
+            <g id="Layer_2">
+              <path
+                d="M17,3H7C5.3,3,4,4.3,4,6v1L3.2,17.8C3.1,18.6,3.4,19.4,4,20s1.4,1,2.2,1h2.3c1.3,0,2.5-0.9,2.9-2.2l0.6-2.2l0.6,2.2 c0.4,1.3,1.6,2.2,2.9,2.2h2.3c0.8,0,1.6-0.4,2.2-1s0.9-1.4,0.8-2.3L20,7V6C20,4.3,18.7,3,17,3z M7,5h10c0.6,0,1,0.4,1,1H6 C6,5.4,6.4,5,7,5z M18.6,18.7c-0.2,0.2-0.5,0.3-0.7,0.3h-2.3c-0.4,0-0.8-0.3-1-0.7L13,12.7c-0.1-0.4-0.5-0.7-1-0.7s-0.8,0.3-1,0.7 l-1.6,5.5c-0.1,0.4-0.5,0.7-1,0.7H6.2c-0.3,0-0.5-0.1-0.7-0.3c-0.2-0.2-0.3-0.5-0.3-0.8L5.9,8h3.7L9.3,8.3c-0.4,0.4-0.4,1,0,1.4 s1,0.4,1.4,0L12,8.4l1.3,1.3C13.5,9.9,13.7,10,14,10s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L14.4,8h3.7l0.8,9.9 C18.8,18.2,18.8,18.5,18.6,18.7z"
+              ></path>
+            </g>
+          </g>
+        </svg>
+      </button>
+      <button id="foots-zoom-button">
+        <i class="fa-solid fa-socks"></i>
+      </button>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Votre Panier <span id="modal-total-price"></span></h2>
+        <div id="modal-cart-content">
+          <!-- Les éléments du panier seront ajoutés dynamiquement ici -->
+        </div>
+        <div class="modal-btn">
+          <button id="modal-checkout">Acheter séparément</button>
+          <button id="modal-checkout-tenue">Acheter en tenue</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
